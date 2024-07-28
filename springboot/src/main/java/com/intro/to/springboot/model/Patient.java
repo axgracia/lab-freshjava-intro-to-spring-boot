@@ -5,6 +5,15 @@ import java.time.LocalDate;
 
 @Entity
 public class Patient {
+    @Id
+    private Integer patientId;
+    private String name;
+    private LocalDate dateOfBirth;
+
+    @ManyToOne
+    @JoinColumn(name = "admitted_by")
+    private Employee admittedBy;
+
     public String getName() {
         return name;
     }
@@ -29,22 +38,14 @@ public class Patient {
         this.admittedBy = admittedBy;
     }
 
-    public int getPatientId() {
+    public Integer getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
+    public void setPatientId(Integer patientId) {
         this.patientId = patientId;
     }
 
-    @Id
-    private int patientId;
-    private String name;
-    private LocalDate dateOfBirth;
-
-    @ManyToOne
-    @JoinColumn(name = " admitted_by")
-    private Employee admittedBy;
 
     // Getters and setters
 }
